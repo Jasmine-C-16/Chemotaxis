@@ -1,14 +1,21 @@
 Bacteria[] colony;
+Star[] stars;
 
  void setup()   
  {     
  	size(800,800);
  	background(10);
  	frameRate(30);
+
  	colony = new Bacteria[1600];
+ 	stars = new Star[1600];
 
  	for (int i=0; i<colony.length; i++){
  		colony[i]= new Bacteria();
+ 	}
+
+ 	for (int n=0; n<stars.length; n++){
+ 		stars[n] = new Star();
  	}
  }   
 
@@ -18,6 +25,11 @@ Bacteria[] colony;
  	for (int i=0; i<colony.length; i++){
  		colony[i].move();
  		colony[i].show();
+ 	}
+
+ 	for (int n=0;n<stars.length; n++){
+ 		stars[n].move();
+ 		stars[n].show();
  	}
  }  
 
@@ -80,3 +92,39 @@ Bacteria[] colony;
  		ellipse(bx,by,exy,exy);
  	}
  }    
+
+
+ class Star{
+ 	int sx,sy,srgb,sxy;
+ 	int sbx,sby;
+
+ 	Star() {
+ 		srgb=(int)(Math.random()*255);
+ 		sx=(int)(Math.random()*800);
+ 		sy=(int)(Math.random()*800);
+ 		sxy = (int)(Math.random()*7);
+ 	}
+
+ 	void move(){
+ 		sx++;
+ 		if (sx>800){
+ 			sx=0;
+ 			sy=(int)(Math.random()*800);
+ 		}
+ 	}
+
+ 	void show(){
+ 		noStroke();
+ 		fill(srgb);
+ 		ellipse(sbx,sby,sxy,sxy);
+ 	}
+
+ }
+
+// Star[] stars;
+
+// 	void setup(){
+// 		for (int i=0; i<stars.length; i++){
+// 	 		stars[i] = new Star();
+// 	 	}
+// 	}
