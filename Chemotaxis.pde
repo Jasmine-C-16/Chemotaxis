@@ -1,5 +1,5 @@
-Bacteria[] colony;
 Star[] stars;
+Bacteria[] colony;
 
 void setup() {     
  	size(800,800);
@@ -7,27 +7,28 @@ void setup() {
  	frameRate(30);
 
  	colony = new Bacteria[1000];
- 	stars = new Star[1600];
-
- 	for (int i=0; i<colony.length; i++){
- 		colony[i]= new Bacteria();
- 	}
+ 	stars = new Star[1000];
 
  	for (int n=0; n<stars.length; n++){
  		stars[n] = new Star();
+ 	}
+
+ 	for (int i=0; i<colony.length; i++){
+ 		colony[i]= new Bacteria();
  	}
 }   
 
 void draw() {    
  	background(10);
- 	for (int i=0; i<colony.length; i++){
- 		colony[i].move();
- 		colony[i].show();
- 	}
-
+ 	
  	for (int n=0;n<stars.length; n++){
  		stars[n].move();
  		stars[n].show();
+ 	}
+
+ 	for (int i=0; i<colony.length; i++){
+ 		colony[i].move();
+ 		colony[i].show();
  	}
 }  
 
@@ -41,7 +42,7 @@ class Bacteria {
  		b=(int)(Math.random()*255);
  		bx=(int)(Math.random()*400+200);
  		by=(int)(Math.random()*400+200);
- 		exy = (int)(Math.random()*10);
+ 		exy = (int)(Math.random()*15);
  	}
 
  	void move(){
@@ -57,6 +58,20 @@ class Bacteria {
  			by+=(int)(Math.random()*10-7);
  		if (mouseY == by)
  			by+=(int)(Math.random()*50-25);
+
+ 		// if (mouseX > bx)
+ 		// 	bx+=(int)(Math.random()*5);
+ 		// if (mouseX < bx)
+ 		// 	bx+=(int)(Math.random()*5-5);
+ 		// if (mouseX == bx)
+ 		// 	bx+=(int)(Math.random()*20-10);
+ 		// if (mouseY > by)
+ 		// 	by+=(int)(Math.random()*5);
+ 		// if (mouseY < by)
+ 		// 	by+=(int)(Math.random()*5-5);
+ 		// if (mouseY == by)
+ 		// 	by+=(int)(Math.random()*20-10);
+
  	}
 
  	void show(){
@@ -71,7 +86,7 @@ class Star{
  	int sx,sy,srgb,sxy;
 
  	Star() {
- 		srgb=(int)(Math.random()*235);
+ 		srgb=(int)(Math.random()*215);
  		sx=(int)(Math.random()*800);
  		sy=(int)(Math.random()*800);
  		sxy = (int)(Math.random()*7);
